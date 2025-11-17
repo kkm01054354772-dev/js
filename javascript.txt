@@ -21,7 +21,7 @@ javascript 라이브러리 : react, jquery
 ---------------------------------------------
 재선언           O           X           X
 재할당           O           O           X
-범위         function      범위{}      범위{}
+범위          function     범위{}      범위{}
 
 자료형
     (1) boolean
@@ -36,5 +36,5 @@ javascript 라이브러리 : react, jquery
     (2) 비교 :
         == : 값만 비교
         === : 값, 타입 비교
-    (3) 연결 
+
  
