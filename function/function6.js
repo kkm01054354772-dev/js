@@ -28,6 +28,7 @@ setTimeout(() => {
 }, 2000);
 console.log("종료");
 
+// 3초 간격으로 알람 출력
 console.log("시작");
 setInterval(() => {
   console.log("3초가 지났습니다.");

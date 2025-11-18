@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button type="button" onclick="showDialog()">클릭</button> -->
+    <button type="button">클릭 1</button>
+    <button type="button">클릭 2</button>
+    <script>
+      function showDialog() {
+        alert("안녕");
+      }
+
+      //   const firstBtn = document.querySelector("button");
+      //   firstBtn.addEventListener("click", showDialog);
+
+      // 클릭이 2개 있을 때
+      //   document.body.querySelector("button:nth-child(2)").addEventListener("click", () => alert("bye"));
+      //   firstBtn.nextElementSibling.addEventListener("click", () => alert("bye"));
+
+      // button을 한꺼번에 찾기
+      const btns = document.querySelectorAll("button");
+      btns[0].addEventListener("click", showDialog);
+      btns[1].addEventListener("click", () => alert("bye"));
+    </script>
+  </body>
+</html>
