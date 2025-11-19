@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>The Light Bulb</h2>
+    <button type="button">Turn on the light</button>
+    <img src="../img/pic_bulboff.gif" alt="" />
+    <button type="button">Turn off the light</button>
+
+    <script>
+      // 불 키기 버튼 누를 시 img src 수정
+      const btns = document.querySelectorAll("button");
+      btns[0].addEventListener("click", () => {
+        document.querySelector("img").src = "../img/pic_bulbon.gif";
+      });
+      btns[1].addEventListener("click", () => {
+        document.querySelector("img").src = "../img/pic_bulboff.gif";
+      });
+    </script>
+  </body>
+</html>
