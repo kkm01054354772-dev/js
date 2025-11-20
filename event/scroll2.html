@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        height: 4000px;
+      }
+      span.badge {
+        cursor: pointer;
+      }
+
+      .navbar {
+        position: fixed;
+        width: 100%;
+      }
+
+      .navbar-brand {
+        font-size: 45px;
+        transition: all 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄️</span>
+      </div>
+    </nav>
+    <script>
+      // 뱃지 클릭시 Light <=> Dark 모드 전환
+      // 내브바 색상 변경
+      // 뱃지 색 변경, 글자색 변경, 글씨 변경
+      const nav = document.querySelector(".navbar");
+
+      const element = document.querySelector(".navbar-brand");
+      nav.addEventListener("click", (e) => {
+        // console.log(e.target);
+        const span = e.target;
+        if (span.textContent.includes("Dark")) {
+          if (span.classList.contains("badge")) {
+            e.currentTarget.classList.replace("bg-light", "bg-dark");
+            span.classList.replace("bg-dark", "bg-light");
+            span.textContent = "Light 🔄️";
+            span.style.color = "black";
+            span.previousElementSibling.style.color = "white";
+          }
+        } else {
+          if (span.classList.contains("badge")) {
+            e.currentTarget.classList.replace("bg-dark", "bg-light");
+            span.classList.replace("bg-light", "bg-dark");
+            span.textContent = "Dark 🔄️";
+            span.style.color = "white";
+            span.previousElementSibling.style.color = "black";
+          }
+        }
+      });
+      window.addEventListener("scroll", () => {
+        // 현재 창에서 스크롤이 1/2 지점까지 내려오면 글자 크기를 20px 변경
+        // 마우스가 다시 그 위로 올라오면 다시 글자 크기를 45px로 변경
+        // console.log(window.outerHeight);
+        // console.log(window.innerHeight);
+
+        if (window.scrollY > window.innerHeight / 2) {
+          element.style.fontSize = "20px";
+        } else {
+          element.style.fontSize = "45px";
+        }
+      });
+    </script>
+  </body>
+</html>

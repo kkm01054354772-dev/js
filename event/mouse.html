@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Mouse Over Me!!</p>
+
+    <script>
+      const pTag = document.querySelector("p");
+      pTag.addEventListener("mouseover", (e) => (e.target.style.color = "red"));
+      pTag.addEventListener("mouseleave", (e) => (e.target.style.color = "black"));
+    </script>
+  </body>
+</html>
