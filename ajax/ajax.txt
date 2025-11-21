@@ -1,0 +1,4 @@
+AJAX(Asynchronous JavaScript And XML)
+    - 비동기적으로 정보(XML, JSON(주로 사용)) 교환
+    - 초창기에는 XMLHttpRequest 객체를 사용 => jQuery 라이브러리 사용
+    - Fetch API(브라우저) / axios(설치) 사용
