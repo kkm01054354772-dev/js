@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        background-color: lightblue;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+      .container li {
+        margin: 0 10px;
+        width: 25%;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>메뉴 1</li>
+      <li>메뉴 2</li>
+      <li>메뉴 3</li>
+      <li>메뉴 4</li>
+    </ul>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      // 메뉴 1 클릭시
+      //  https://kkm01054354772-dev.github.io/data/version.json
+      // version, codename 을 ul>li 형태로 출력
+      document.querySelector("li").addEventListener("click", () => {
+        axios.get("https://kkm01054354772-dev.github.io/data/version.json").then((response) => {
+          const data = response.data;
+          let result = `<ul>`;
+          result += `<li>version : ${data.version}</li>`;
+          result += `<li>codename : ${data.codename}</li>`;
+          result += `</ul>`;
+          document.querySelector("div").insertAdjacentHTML("afterbegin", result);
+        });
+      });
+    </script>
+  </body>
+</html>
