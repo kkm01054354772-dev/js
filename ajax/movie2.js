@@ -26,28 +26,26 @@ document.querySelector("button").addEventListener("click", () => {
   const date = txtYear.value + selMon.value + selDay.value;
   console.log(date);
   const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=19f565a03be5edec601e9653b7ca8808&targetDt=${date}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+  axios.get(url).then((response) => {
+    console.log(response.data);
 
-      // movieCd, movieNm, rank, rankInten forEach 구문으로 출력
+    // movieCd, movieNm, rank, rankInten forEach 구문으로 출력
 
-      let contents = "";
-      const dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
+    let contents = "";
+    const dailyBoxOfficeList = response.data.boxOfficeResult.dailyBoxOfficeList;
 
-      dailyBoxOfficeList.forEach((element) => {
-        console.log(element.movieCd, element.movieNm, element.rank, element.rankInten);
-        // 1. 위키드 : 포 굿 (0)
-        // 7. 세계의 주인 (▲1)
-        // 9. 퍼스트 라이드 (▼-2)
+    dailyBoxOfficeList.forEach((element) => {
+      console.log(element.movieCd, element.movieNm, element.rank, element.rankInten);
+      // 1. 위키드 : 포 굿 (0)
+      // 7. 세계의 주인 (▲1)
+      // 9. 퍼스트 라이드 (▼-2)
 
-        const rankSign = element.rankInten > 0 ? "▲" : element.rankInten < 0 ? "▼" : "";
-        // #msg에 나타내기
-        contents += `${element.rank}. <a href=${element.movieCd}>${element.movieNm}</a> (${rankSign}${element.rankInten})<br>`;
-      });
-      document.getElementById("msg").innerHTML = contents;
+      const rankSign = element.rankInten > 0 ? "▲" : element.rankInten < 0 ? "▼" : "";
+      // #msg에 나타내기
+      contents += `${element.rank}. <a href=${element.movieCd}>${element.movieNm}</a> (${rankSign}${element.rankInten})<br>`;
     });
+    document.getElementById("msg").innerHTML = contents;
+  });
 });
 
 // 3. 영화 제목 클릭 시 해당 영화의 상세정보를 가져와서 보여주기
@@ -69,11 +67,12 @@ document.querySelector("#msg").addEventListener("click", (e) => {
   // 장르()
   // 감독
   // 배우
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      const movieInfo = data.movieInfoResult.movieInfo;
+  axios
+    .get(url)
+
+    .then((response) => {
+      console.log(response.data);
+      const movieInfo = response.data.movieInfoResult.movieInfo;
       let movieDetail = "<ul>";
       movieDetail += `<li>한글제목: ${movieInfo.movieNm}</li>`;
       movieDetail += `<li>영어제목: ${movieInfo.movieNmEn}</li>`;
